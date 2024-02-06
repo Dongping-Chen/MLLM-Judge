@@ -1,8 +1,8 @@
 <div align="center">
 <h1>MLLM-as-a-Judge:
 Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark</h1>
-<img src="figures/fig1.pdf">
-<img src="figures/Radar.pdf">
+<img src="figures/fig1.png">
+<img src="figures/Radar.png">
 <p align="center">
 
 </p>
