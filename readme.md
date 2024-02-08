@@ -6,7 +6,7 @@ Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark</h1>
 <p align="center">
 
 </p>
-This repository is a official code of the research presented in the paper <a href="https://arxiv.org/abs/2401.05952" target='_blank'>[arXiv]</a>. The goal is to provide a transparent, open-source implementation for the community to explore and build upon.
+This is the official code repository of the research presented in the paper <a href="https://arxiv.org/abs/2402.04788" target='_blank'>[arXiv]</a>. The goal is to provide a transparent, open-source implementation for the community to explore and build upon.
 </div>
 
 # Benchmark: MLLM-as-a-Judge
@@ -37,11 +37,11 @@ This project is based on the findings and methodologies presented in the paper [
 ## Citation
 
 ```
-@misc{gao2024llmasacoauthor,
-      title={LLM-as-a-Coauthor: The Challenges of Detecting LLM-Human Mixcase}, 
-      author={Chujie Gao and Dongping Chen and Qihui Zhang and Yue Huang and Yao Wan and Lichao Sun},
+@misc{chen2024mllmasajudge,
+      title={MLLM-as-a-Judge: Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark}, 
+      author={Dongping Chen and Ruoxi Chen and Shilin Zhang and Yinuo Liu and Yaochen Wang and Huichi Zhou and Qihui Zhang and Pan Zhou and Yao Wan and Lichao Sun},
       year={2024},
-      eprint={2401.05952},
+      eprint={2402.04788},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
