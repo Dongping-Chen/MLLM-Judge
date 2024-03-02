@@ -6,8 +6,8 @@ Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark</h1>
 <img src="https://img.shields.io/github/commit-activity/m/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
 <img src="https://img.shields.io/github/languages/top/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub top language" />
 
-<img src="figures/fig1.png">
-<img src="figures/Radar.png">
+<img src="Figures/fig1.png">
+<img src="Figures/Radar.png">
 <p align="center">
 
 </p>
