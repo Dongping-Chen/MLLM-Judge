@@ -44,7 +44,7 @@ Do not favor certain names or position of the assistants. Be as objective as pos
 if __name__ == "__main__":
     # Parse the arguments
     parser = ArgumentParser()
-    parser.add_argument("--api", type=str, default="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", help="The API key to use for the OpenAI API")
+    parser.add_argument("--api", type=str, default=None, help="The API key to use for the OpenAI API")
     parser.add_argument("--json_file_path", type=str, default=None, help="The path to the JSON file containing the items to evaluate")
     parser.add_argument("--output_file_path", type=str, default=None, help="The path to the JSONL file to write the results to")
     parser.add_argument("--evaluate", type=str, default="score", help="The type of evaluation to perform")
