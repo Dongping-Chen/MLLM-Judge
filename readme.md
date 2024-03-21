@@ -18,7 +18,12 @@ Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark</h1>
 </p>
 </div>
 
+## Updates & News
+- [20/03/2024] :star: We release our complete dataset with guidelines and scripts for benchmarking current VLMs!
+- [14/02/2024] :page_facing_up: We release our paper on [Arxiv](http://arxiv.org/abs/2402.04788) today!
+  
 ## Contents
+- [Updates \& News](#updates--news)
 - [Contents](#contents)
 - [Benchmark:MLLM-as-a-Judge](#benchmarkmllm-as-a-judge)
 - [Benchmark mainstream MLLMs](#benchmark-mainstream-mllms)
