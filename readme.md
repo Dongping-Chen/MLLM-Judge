@@ -20,7 +20,7 @@ Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark</h1>
 
 ## Updates & News
 **Due to the potential deadlines from NeurIPS and EMNLP, our newly added dataset and code will be released in a few weeks. Thanks for your patience.**
-- [01/05/2024] :surf: Our paper is accepted by ICML 2024! 
+- [01/05/2024] :moon: Our paper is accepted by ICML 2024! 
 - [20/03/2024] :star: We release our complete dataset with guidelines and scripts for benchmarking current VLMs!
 - [14/02/2024] :page_facing_up: We release our paper on [Arxiv](http://arxiv.org/abs/2402.04788) today!
   
