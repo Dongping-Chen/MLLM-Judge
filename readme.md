@@ -35,11 +35,8 @@ Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark</h1>
     - [Gemini](#gemini)
     - [CogVLM](#cogvlm)
     - [Other MLLMs](#other-mllms)
-  - [Data Cleaning](#data-cleaning)
-  - [Calculate the final scores](#calculate-the-final-scores)
-- [How to benchmark your MLLMs](#how-to-benchmark-your-mllms)
 - [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
+- [Acknowledgments](#acknowledgments)
 - [Citation](#citation)
   
 ## Benchmark:MLLM-as-a-Judge
@@ -127,15 +124,16 @@ Notice: CogVLM cannot follow our output template in Batch Evaluation setting.
 #### Other MLLMs
 We also benchmark our MLLM-as-a-Judge on GLM-4V and minicpm-v. However, they cannot follow the output template or inherent a huge bias in judging and excluded in our experiments.
 
-### Data Cleaning
-After collecting all judgments, you should clean their answer and only remains the judgments. You can run the `clean_data.py` in `scripts/`.
+<!-- ### Data Cleaning
+After collecting all judgments, you should clean their answer and only remains the judgments. You can run the `clean_data.py` in `scripts/`. -->
 
-### Calculate the final scores
+<!-- ### Calculate the final scores
 After data cleaning process, you can run the `calculate.py` in `scripts/` and collect the final scores in *Batch Evaluation, Score Evaluation, Pair Comparison* settings in the following template:
 ```shell
 ```
+
 ## How to benchmark your MLLMs
-You can also benchmark your own MLLMs following the template we present for these four mainstream VLMs by inference-clean-calculate process.
+You can also benchmark your own MLLMs following the template we present for these four mainstream VLMs by inference-clean-calculate process. -->
 
 ## Contributing
 Contributions to this project are welcome. Please consider the following ways to contribute:
@@ -143,8 +141,8 @@ Contributions to this project are welcome. Please consider the following ways to
 - Reporting issues
 - Proposing new features or improvements
 - Benchmark other mainstream MLLMs
-  
-## Acknowledgements
+
+## Acknowledgments
 
 This project is based on the findings and methodologies presented in the paper [LLM-as-a-Judge](https://arxiv.org/abs/2306.05685) and [HallusionBench](https://arxiv.org/abs/2310.14566).
 
