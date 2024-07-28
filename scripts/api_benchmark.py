@@ -33,17 +33,16 @@ def get_res(model, image_path, prompt, api, temperature, top_p, llm_assist: bool
     output = func(image_path, prompt, api, temperature, top_p)
     try:
         json_output = json.loads(output)
-        judgement = json_output["Judgement"]
-        return judgement
+        return output, json_output
     except KeyError:
         if llm_assist:
             pass
-        return output
+        return output, None
     
 
 
 def construct_input(prompt_dict, judge_mode, setting, instruction, responses):
-    prompt = prompt_dict["start"] + "\nEvaluation Steps:\n" + prompt_dict["settings"][setting] + "\nEvaluation Method:\n" + prompt_dict["tasks"][judge_mode] + "\nNotice:\n" + prompt_dict["notice"] + "\nHere is the input:\n"
+    prompt = prompt_dict["start"] + "\nEvaluation Steps:\n" + prompt_dict["setting"][setting] + "\nEvaluation Method:\n" + prompt_dict["tasks"][judge_mode] + "\nNotice:\n" + prompt_dict["notice"] + "\nHere is the input:\n"
     if judge_mode == "score":
         prompt += f"""
 [The Start of User Instruction]
@@ -78,19 +77,31 @@ def construct_input(prompt_dict, judge_mode, setting, instruction, responses):
             num_assistant += 1
     return prompt
     
-def benchmark(model, judge_mode, setting, api, image_root, temperature, top_p):
+def benchmark(model, judge_mode, setting, api, image_dir, temperature, top_p):
     items = []
     with open(f"../Dataset/Benchmark/{judge_mode}.jsonl", "r") as json_file:
         for line in json_file:
                 items.append(json.loads(line))
+                
     output_path = f"./benchmark_result/{judge_mode}_{model}.jsonl"
+    folder_path = os.path.dirname(output_path)
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+        
     prompt_dict = get_prompt()
-    for item in tqdm(items[:], desc="Processing items"):
-        image_path = image_root + item['image_path']  
-        prompt = construct_input(prompt_dict, judge_mode, setting, item['instruction'])
-
-        response = get_res(model, image_path, prompt, api, temperature, top_p)
-        item['mllm_judge'] = response
+    for item in tqdm(items[:3], desc="Processing items"):
+        image_path = image_dir + item['image_path']  
+        if judge_mode == 'score':
+            responses = [item['answer']]
+        elif judge_mode == 'pair':
+            responses = [item['answer1']['answer'], item['answer2']['answer']]
+        elif judge_mode == 'batch':
+            responses = [i['answer'] for i in item['answers']]
+        prompt = construct_input(prompt_dict, judge_mode, setting, item['instruction'], responses=responses)
+        print(prompt)
+        raw_response, json_response = get_res(model, image_path, prompt, api, temperature, top_p)
+        item['mllm_judge'] = raw_response
+        # item['json_mllm_judge'] = json_response
         with open(output_path, "a") as jsonl_file:
             jsonl_file.write(json.dumps(item) + "\n")
         
@@ -105,10 +116,10 @@ def main():
     parser.add_argument("--setting", type=str, default="No COT", help="The setting of the evaluation")
     parser.add_argument("--api", type=str, default=None, help="API for inference.")
     args = parser.parse_args()
-    assert args.judge_mode not in ['score', 'batch', 'pair'], "Invalid judge mode"
-    assert args.model not in ['gemini', 'gpt-4v', 'gpt-4o', 'llava-1.6-34b', 'llava-1.6-13b', 'llava-1.6-7b', 'qwen-vl-plus', 'qwen-vl-max', 'qwen-vl-chat']
+    assert args.judge_mode in ['score', 'batch', 'pair'], "Invalid judge mode"
+    assert args.model in ['gemini', 'gpt-4v', 'gpt-4o', 'llava-1.6-34b', 'llava-1.6-13b', 'llava-1.6-7b', 'qwen-vl-plus', 'qwen-vl-max', 'qwen-vl-chat']
     
-    benchmark = benchmark(args.model, args.judge_mode, args.setting, args.api, args.model_ckpt, args.image_root, args.temperature, args.top_p)
+    benchmark_result = benchmark(args.model, args.judge_mode, args.setting, args.api, args.image_root, args.temperature, args.top_p)
     
 
 if __name__ == '__main__':
